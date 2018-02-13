@@ -11,7 +11,8 @@ app.post("/local_time", function(req, res) {
 
 
   res.setHeader('Content-Type', 'application/json'); //Requires application/json MIME type
-  res.send(JSON.stringify({ "speech": response, "displayText": response 
+  res.send(JSON.stringify({ "speech": response, "displayText": response   }));
+
 	/*res.json({
 "messages": [
   {
