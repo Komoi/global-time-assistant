@@ -4,7 +4,8 @@ app.get("/", function(req, res) {
   });
 
 app.post("/local_time", function(req, res) {
-      res.send("{\r\n\"messages\": [\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  },\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  }\r\n]\r\n}");
+	  res.writeHead(200, {'Content-Type': 'application/json'});
+      res.send("\"messages\": [\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  },\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  }\r\n]");
   });
 }
 
