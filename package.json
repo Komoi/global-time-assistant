@@ -10,7 +10,11 @@
   "author": "Ondrej Komarek",
   "license": "ISC",
   "dependencies": {
+    "actions-on-google": "^1.8.2",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "firebase-admin": "^5.8.2",
+    "firebase-functions": "^0.8.1",
+    "request": "^2.83.0"
   }
 }
