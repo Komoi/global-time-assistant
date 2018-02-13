@@ -4,7 +4,7 @@ app.get("/", function(req, res) {
   });
 
 app.post("/local_time", function(req, res) {
-      res.send("4:20 pm");
+      res.send("\"messages\": [\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  },\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  }\r\n]");
   });
 }
 
