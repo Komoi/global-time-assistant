@@ -14,7 +14,7 @@ app.post("/local_time", function(req, res) {
     "type": 0
   },
   {
-    "speech": "It is 4pm in there",
+    "displayText": "It is 4pm in there",
     "type": 0
   }
 ]
