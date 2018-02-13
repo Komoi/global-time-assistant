@@ -4,4 +4,8 @@ app.get("/", function(req, res) {
   });
 }
 
+app.post("/local_time", function(req, res) {
+      res.send("4:20 pm");
+  });
+}
 module.exports = appRouter;
