@@ -78,37 +78,6 @@ afterLoad('https://www.humblebundle.com/monthly/p/february_2018_monthly', functi
 */
 
 
-var requestScrape = require("request");
-
-requestScrape({
-  uri: "https://www.humblebundle.com/monthly/p/february_2018_monthly",
-}, function(error, response, body) {
-    var string=body.substring(body.lastIndexOf("sections:")+9 ,body.lastIndexOf(",\n  user_will_receive_future_months:"));
-
-  console.log(string);
-
- // string = '[{"human_name": "Life is Strange Complete Season (Episodes 1-5)", "id": "lifeisstrange_complete"}, {"human_name": "Tacoma", "id": "tacoma"}, {"human_name": "Sid Meiers CivilizationVI", "id": "civilization6"}, {"human_name": "Owlboy", "id": "owlboy"}, {"human_name": "Black the Fall", "id": "blackthefall"}, {"human_name": "Snake Pass", "id": "snakepass"}, {"human_name": "The Norwood Suite", "id": "thenorwoodsuite"}, {"human_name": "Fortune-499", "id": "fortune499"}]'
-
-var objsArray = []
-  var jsonObj = JSON.parse(string);
-for(var i in jsonObj)
-{
-  console.log(unescape(jsonObj[i].human_name).replace(/(\r\n|\n|\r)/gm,""));
-}
-
-});
-
-//var objsArray = JSON.parse(string);
-//console.log(objsArray[0].id);
-  /*var fs = require('fs');
-  fs.writeFile("/tmp/test", string, function(err) {
-      if(err) {
-          return console.log(err);
-      }
-
-      console.log("The file was saved!");
-  }); */
-
 
 
 

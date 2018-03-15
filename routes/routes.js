@@ -8,12 +8,33 @@ app.post("/local_time", function(req, res) {
 	 // res.writeHead(200);
 	 //res.set('Content-Type', 'application/json');
 
+
+req.on('data', function(data) {
+            data = data.toString();
+            data = data.split('&');
+            for (var i = 0; i < data.length; i++) {
+                var _data = data[i].split("=");
+                POST[_data[0]] = _data[1];
+            }
+            console.log(POST);
+        })
+
+
+
 	  textResponse = "" //Default response from the webhook to show it's working
 
 		var requestScrape = require("request");
 
+		var date = new Date();
+		var year = date.getFullYear();
+		var formatter = new Intl.DateTimeFormat("en-us", { month: "long" }),
+   		month = formatter.format(date);	
+   		month = month.toLowerCase();
+
+		console.log("https://www.humblebundle.com/monthly/p/" + month + "_" + year + "_monthly")
+
 		requestScrape({
-		  uri: "https://www.humblebundle.com/monthly/p/february_2018_monthly",
+		  uri: "https://www.humblebundle.com/monthly/p/" + month + "_" + year + "_monthly",
 		}, function(error, response, body) {
 		    var string=body.substring(body.lastIndexOf("sections:")+9 ,body.lastIndexOf(",\n  user_will_receive_future_months:"));
 
