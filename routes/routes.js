@@ -53,10 +53,14 @@ app.post("/local_time", jsonParser, function(req, res) {
 		if(!datePeriod){
 			var date = new Date();
 		} else {
-			if(datePeriod.includes('/')){
+			if(datePeriod.search('/')){
 				var date = dateAndTime.parse(datePeriod.substr(0, datePeriod.indexOf('/')), 'YYYY-MM-DD')
+						console.log("1")
+
 			} else {
 				var date =dateAndTime.parse(datePeriod)
+										console.log("2")
+
 			}
 		}
 
