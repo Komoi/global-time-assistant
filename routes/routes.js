@@ -16,8 +16,6 @@ app.post("/local_time", function(req, res) {
 	  //res.setHeader("Content-Type", "application/json" );
 	 // res.writeHead(200);
 	 //res.set('Content-Type', 'application/json');
-	console.log(req.body);
-
 
 	const assistant = new ActionsSdkAssistant({request: req, response: res});
 
@@ -37,7 +35,21 @@ app.post("/local_time", function(req, res) {
 
 		var requestScrape = require("request");
 
-		var date = new Date();
+		console.log(req.body);
+
+		const reqBody = JSON.parse(req.body);
+		var datePeriod = ""
+		if(!isEmptyObject(reqBody.result.parameters)){
+				datePeriod = reqBody.result.parameters["date-period"]
+		}
+
+		if(!datePeriod){
+			var date = new Date();
+		} else {
+			var date = Date.parse(datePeriod.substr(0, datePeriod.indexOf('/')))
+		}
+
+		
 		var year = date.getFullYear();
 		var formatter = new Intl.DateTimeFormat("en-us", { month: "long" }),
    		month = formatter.format(date);	
@@ -92,6 +104,10 @@ console.log(textResponse)
       //res.send("\"messages\": [\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  },\r\n  {\r\n    \"speech\": \"It is 4pm in there\",\r\n    \"type\": 0\r\n  }\r\n]");
   });
 
+}
+
+function isEmptyObject(obj) {
+  return !Object.keys(obj).length;
 }
 
 
