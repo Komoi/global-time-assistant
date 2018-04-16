@@ -48,18 +48,13 @@ app.post("/local_time", jsonParser, function(req, res) {
 				}
 		}
 
-		console.log(datePeriod);
-
 		if(!datePeriod){
 			var date = new Date();
 		} else {
 			if(datePeriod.includes("/")){
 				var date = dateAndTime.parse(datePeriod.substr(0, datePeriod.indexOf('/')), 'YYYY-MM-DD');
-						console.log("1");
 			} else {
-				var date =dateAndTime.parse(datePeriod);
-										console.log("2");
-
+				var date = dateAndTime.parse(datePeriod, 'YYYY-MM-DD');
 			}
 		}
 
