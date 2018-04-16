@@ -1,4 +1,12 @@
+const ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
+const bodyParser = require('body-parser');
+
 var appRouter = function(app) {
+
+app.use(express.bodyParser());
+
+
+
 app.get("/", function(req, res) {
       res.send("Hello World");
   });
@@ -7,9 +15,12 @@ app.post("/local_time", function(req, res) {
 	  //res.setHeader("Content-Type", "application/json" );
 	 // res.writeHead(200);
 	 //res.set('Content-Type', 'application/json');
+	console.log(req.body);
 
 
-req.on('data', function(data) {
+	const assistant = new ActionsSdkAssistant({request: req, response: res});
+
+	req.on('data', function(data) {
             data = data.toString();
             data = data.split('&');
             for (var i = 0; i < data.length; i++) {
