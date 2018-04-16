@@ -46,7 +46,9 @@ app.post("/local_time", jsonParser, function(req, res) {
 				if(!datePeriod){
 					datePeriod = reqBody.result.parameters["date"]
 				}
-		} 
+		}
+
+		console.log(datePeriod)
 
 		if(!datePeriod){
 			var date = new Date();
