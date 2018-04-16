@@ -48,7 +48,8 @@ app.post("/local_time", jsonParser, function(req, res) {
 			var date = new Date();
 		} else {
 			var date = Date.parse(datePeriod.substr(0, datePeriod.indexOf('/')))
-			console.log(date.toISOString())
+			console.log(datePeriod.substr(0, datePeriod.indexOf('/')))
+			console.log(date)
 		}
 
 		
