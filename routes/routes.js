@@ -42,24 +42,23 @@ app.post("/local_time", jsonParser, function(req, res) {
 		const reqBody = req.body;
 		var datePeriod = ""
 		if(!isEmptyObject(reqBody.result.parameters)){
-				datePeriod = reqBody.result.parameters["date-period"]
+				datePeriod = reqBody.result.parameters["date-period"];
 				if(!datePeriod){
-					datePeriod = reqBody.result.parameters["date"]
+					datePeriod = reqBody.result.parameters["date"];
 				}
 		}
 
-		console.log(datePeriod)
+		console.log(datePeriod);
 
 		if(!datePeriod){
 			var date = new Date();
 		} else {
-			if(datePeriod.indexOf('/') < 0 ){
-				var date = dateAndTime.parse(datePeriod.substr(0, datePeriod.indexOf('/')), 'YYYY-MM-DD')
-						console.log("1")
-
+			if(datePeriod.includes("/")){
+				var date = dateAndTime.parse(datePeriod.substr(0, datePeriod.indexOf('/')), 'YYYY-MM-DD');
+						console.log("1");
 			} else {
-				var date =dateAndTime.parse(datePeriod)
-										console.log("2")
+				var date =dateAndTime.parse(datePeriod);
+										console.log("2");
 
 			}
 		}
