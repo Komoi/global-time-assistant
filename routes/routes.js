@@ -1,9 +1,10 @@
 const ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
 const bodyParser = require('body-parser');
 
+
 var appRouter = function(app) {
 
-app.use(express.bodyParser());
+app.use(bodyParser());
 
 
 
