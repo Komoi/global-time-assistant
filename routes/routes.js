@@ -1,5 +1,6 @@
 const ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
 const bodyParser = require('body-parser');
+var jsonParser = bodyParser.json()
 
 
 var appRouter = function(app) {
@@ -12,14 +13,14 @@ app.get("/", function(req, res) {
       res.send("Hello World");
   });
 
-app.post("/local_time", function(req, res) {
+app.post("/local_time", jsonParser, function(req, res) {
 	  //res.setHeader("Content-Type", "application/json" );
 	 // res.writeHead(200);
 	 //res.set('Content-Type', 'application/json');
 
 	const assistant = new ActionsSdkAssistant({request: req, response: res});
 
-	req.on('data', function(data) {
+	/*req.on('data', function(data) {
             data = data.toString();
             data = data.split('&');
             for (var i = 0; i < data.length; i++) {
@@ -27,7 +28,7 @@ app.post("/local_time", function(req, res) {
                 POST[_data[0]] = _data[1];
             }
             console.log(POST);
-        })
+        })*/
 
 
 
@@ -37,7 +38,7 @@ app.post("/local_time", function(req, res) {
 
 		console.log(req.body);
 
-		const reqBody = JSON.parse(req.body);
+		const reqBody = req.body;
 		var datePeriod = ""
 		if(!isEmptyObject(reqBody.result.parameters)){
 				datePeriod = reqBody.result.parameters["date-period"]
