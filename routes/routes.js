@@ -1,6 +1,7 @@
 const ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json()
+let dateAndTime = require('date-and-time');
 
 
 var appRouter = function(app) {
@@ -47,9 +48,7 @@ app.post("/local_time", jsonParser, function(req, res) {
 		if(!datePeriod){
 			var date = new Date();
 		} else {
-			var date = Date.parse(datePeriod.substr(0, datePeriod.indexOf('/')))
-			console.log(datePeriod.substr(0, datePeriod.indexOf('/')))
-			console.log(date)
+			var date = dateAndTime.parse(datePeriod.substr(0, datePeriod.indexOf('/')), 'YYYY-MM-DD')
 		}
 
 		
